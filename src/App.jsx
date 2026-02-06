@@ -1,54 +1,70 @@
-//import { useState } from 'react'
-/* import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg' */
+// src/App.jsx
 import './App.css'
 import Card from './Components/Card'
 import Footer from './Components/Footer'
-import Header from './Components/header'
-import { useState,useEffect } from 'react'
+import Header from './Components/Header'
+import { useState } from 'react'
 import { db } from './db/db'
 
-
-
-
 function App() {
-  //variable y su metodo
-const [customer, setCustomer] = useState({});  
-const [total, setTotal] = useState(0);
-const [products, setProducts] = useState([]);
-const [modal, setModal] = useState(false);
-console.log(total);
-const [cart,setCart] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [data] = useState(db);
 
-//()=>setTotal(100);
-const [data,setData] = useState(db);
-/* useEffect(()=>{ //para dar valores despues de cargar todo
-  setData(db);
-},[]); */
-console.log(data);
+  // Función para aumentar cantidad
+  function increaseQuantity(id) {
+    const updatedCart = cart.map(item => {
+      if (item.id === id) {
+        return { ...item, quantity: item.quantity + 1 }
+      }
+      return item;
+    });
+    setCart(updatedCart);
+  }
 
+  // Función para disminuir cantidad
+  function decreaseQuantity(id) {
+    const updatedCart = cart.map(item => {
+      if (item.id === id && item.quantity > 1) {
+        return { ...item, quantity: item.quantity - 1 }
+      }
+      return item;
+    });
+    setCart(updatedCart);
+  }
+
+  // Función para eliminar producto 
+  function removeFromCart(id) {
+    setCart(prevCart => prevCart.filter(guitar => guitar.id !== id));
+  }
+
+  // Función para vaciar todo el carrito
+  function clearCart() {
+    setCart([]);
+  }
 
   return (
     <>
-    <Header cart={cart}/>
-    <main className="container-xl mt-5">
-        <h2 className="text-center">Nuestra Colección</h2>
-
-        <div className="row mt-5">
-           {data.map((guitar) => (
-            <Card
-            key={guitar.id}
-            guitar = {guitar}
-            cart = {cart}
-            setCart = {setCart}
-            />
-           ))}
-        </div>
-    </main>
-
-<Footer/>
-
-   
+      <Header 
+        cart={cart} 
+        removeFromCart={removeFromCart}
+        increaseQuantity={increaseQuantity}
+        decreaseQuantity={decreaseQuantity}
+        clearCart={clearCart}
+      />
+      <main className="container-xl mt-5">
+          <h2 className="text-center">Nuestra Colección</h2>
+          <div className="row mt-5">
+             {data.map((guitar) => (
+              <Card
+                key={guitar.id}
+                guitar={guitar}
+                cart={cart}
+                setCart={setCart}
+              />
+             ))}
+          </div>
+      </main>
+      <Footer/>
     </>
   )
 }
