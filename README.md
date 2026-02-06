@@ -1,16 +1,34 @@
-# React + Vite
+¿Qué es React?
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React es una herramienta para crear páginas web que cambian cuando el usuario interactúa con ellas, por ejemplo al hacer clic o escribir.
 
-Currently, two official plugins are available:
+¿Qué es un componente?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Un componente es una parte de la página web.
+Cada componente representa algo específico, como un botón, una tarjeta o un formulario.
+Una página se construye juntando varios componentes.
 
-## React Compiler
+¿Qué es el state (estado)?
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+El state es la información que puede cambiar dentro de un componente.
+Cuando el state cambia, la pantalla se actualiza automáticamente.
 
-## Expanding the ESLint configuration
+Ejemplos de state:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Un número
+
+Un texto
+
+Si algo está activo o no
+
+¿Qué es useEffect?
+
+useEffect se usa para ejecutar una acción cuando sucede algo.
+
+Se usa, por ejemplo:
+
+Cuando la página se carga
+
+Cuando cambia un state
+
+Para obtener datos de internet
