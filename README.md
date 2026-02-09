@@ -32,3 +32,18 @@ Cuando la página se carga
 Cuando cambia un state
 
 Para obtener datos de internet
+
+
+Persistencia con LocalStorage
+Implemente la lógica para sincronizar el estado del carrito con el almacenamiento local:
+- Al iniciar la app, revisamos si existe un carrito previo en `localStorage`.
+- Utilizamos un `useEffect` que detecta cambios en el carrito y guarda la versión actualizada automáticamente.
+
+Gestión del Carrito
+- **State Dinámico:** El carrito maneja la adición de productos, eliminación y actualización de cantidades de forma reactiva.
+- **Derivación de Estado:** Cálculo del total a pagar y validación de existencia de productos mediante funciones de JavaScript integradas en los componentes.
+
+Estructura del Proyecto
+
+- `src/components/`: Contiene los archivos `Header.jsx`, `Card.jsx`, `Item.jsx` y `Footer.jsx` que estructuran la interfaz.
+- `src/db/`: Contiene el archivo `db.js` que simula la base de datos de nuestros productos.
